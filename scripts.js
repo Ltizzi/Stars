@@ -10,20 +10,31 @@ colores = [
   "#f1fa8c",
 ];
 
+colores2 = [
+  "#ffd27d",
+  "#ffa371",
+  "#a6a8ff",
+  "#fffa86",
+  "#a87bff",
+  "#c7d8ff",
+  "#fff4f3",
+  "#afc9ff",
+];
+
 function genNumber() {
   return Math.floor(Math.random() * 1920);
 }
 
-function randomIndex() {
-  return Math.floor(Math.random() * 8);
+function randomIndex(paleta) {
+  return Math.floor(Math.random() * paleta.length);
 }
 
-function generarEstrellas(cantidad) {
+function generarEstrellas(cantidad, paleta) {
   var resultado = [];
   var contador = 0;
   while (contador < cantidad) {
     resultado.push(
-      genNumber() + "px " + genNumber() + "px " + colores[randomIndex()]
+      genNumber() + "px " + genNumber() + "px " + paleta[randomIndex(paleta)]
     );
     contador++;
   }
@@ -32,15 +43,15 @@ function generarEstrellas(cantidad) {
 
 let stars =
   ":root { --stars1: " +
-  String(generarEstrellas(10900)) +
+  String(generarEstrellas(10900, colores2)) +
   "; --stars2: " +
-  String(generarEstrellas(10000)) +
+  String(generarEstrellas(10000, colores2)) +
   "; --stars3: " +
-  String(generarEstrellas(2500)) +
+  String(generarEstrellas(2500, colores2)) +
   " ;--stars4: " +
-  String(generarEstrellas(10900)) +
+  String(generarEstrellas(10900, colores2)) +
   "; --stars5: " +
-  String(generarEstrellas(500)) +
+  String(generarEstrellas(500, colores2)) +
   ";}";
 
 const sheet = new CSSStyleSheet();
